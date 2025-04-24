@@ -14,9 +14,6 @@ use App\Http\Controllers\MyClientController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-Route::resource('clients', MyClientController::class);
+Route::post('clients', [MyClientController::class, 'store'])->name('clients.store');
+Route::put('clients/{client}', [MyClientController::class, 'update'])->name('clients.update');
+Route::delete('clients/{client}', [MyClientController::class, 'destroy'])->name('clients.destroy');
